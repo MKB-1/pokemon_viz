@@ -15,8 +15,8 @@
         <nav class="nav blue-grey lighten-4">
             <div class="nav-wrapper">
                 <ul id="nav-mobile" class="left">
-                    <li><a class="black-text" href="/html/index.html">Data Set Analysis</a></li>
-                    <li><a class="black-text" href="/html/ml.html">Machine Learning</a></li>
+                    <li><a class="black-text" href="index.html">Data Set Analysis</a></li>
+                    <li><a class="black-text" href="ml.html">Machine Learning</a></li>
                     <li><a class="black-text" href="#">Choosing A Starter Pokemon</a></li>
                 </ul>
             </div>
@@ -91,7 +91,7 @@
           </div>
           <div class="row">
               <div class="col s12">
-                <img width="100%" src="../img/Stats_Boxplot.png" alt="" class="materialboxed">
+                <img width="100%" src="img/Stats_Boxplot.png" alt="" class="materialboxed">
                   <p>
                       Preliminary analysis of the Pokemon Data Set revealed that Pokemon with only one type had Type 2 = None. To prevent errors due to null fields, they were changed to 'None'. Next, by using Pandas DataFrame methods, a rough idea of how stats were distributed was obtained. Unsurprisingly, 'Total' is several magnitudes larger than the other stats - for that reason, it will not be graphed with the other stats, in order to prevent 'squeezing'. Finally, for a more visual representation of stats, a boxplot was generated. Note that Type 1 and Type 2 are henceforth refered to as Primary Type and Secondary Type.
                   </p>
@@ -103,10 +103,10 @@
                   <hr>
                   <br>
                   <h6>Primary Type Frequency</h6>
-                  <img width="100%" src="../img/PrimaryType_Countplot.png" alt="" class="materialboxed">
+                  <img width="100%" src="img/PrimaryType_Countplot.png" alt="" class="materialboxed">
                   <br>
                   <h6>Secondary Type Frequency</h6>
-                  <img width="100%" src="../img/SecondaryType_Countplot.png" alt="" class="materialboxed">
+                  <img width="100%" src="img/SecondaryType_Countplot.png" alt="" class="materialboxed">
                   <br>
                   <p>
                       By using a barchart and the Pandas DataFrame.count() method, the type frequency distribution can be observed. Since types are categorical, the use of a Pareto Chart gives them a numerical value based on frequency.<br>
@@ -122,7 +122,7 @@
                   <div class="col s12">
                       <h5>Type Combinations</h5>
                       <hr>
-                      <img width="100%" src="../img/TypeCombination_Heatmap.png" alt="" class="materialboxed">
+                      <img width="100%" src="img/TypeCombination_Heatmap.png" alt="" class="materialboxed">
                       <p>A Heatmap of the Primary Type/Secondary Type combinations allows us to see which combinations are most prevalent, and which do not exist. These combinations are order specific; therefore Bug/Poison and Poison/Bug are considered different. This specificity begs the question: is there a difference between Primary Type and Secondary Type?<br>
                     Discussions on forums revealed that most people thought that Primary Type played a larger role solely in Pokemon appearance. However, further analysis is needed.</p>
                   </div>
@@ -138,7 +138,7 @@
                         <p id="type-icon-selected" class="type-icon type-bug">bug</p>
                         &emsp;Pokemon
                     </div>
-                      <img id="type-stat-dist-img" width="100%" src="../img/bug_stat_distribution.png" alt="" class="materialboxed">
+                      <img id="type-stat-dist-img" width="100%" src="img/bug_stat_distribution.png" alt="" class="materialboxed">
 
                       <div id="types">
                         <p class="type-icon type-dark">dark</p>
