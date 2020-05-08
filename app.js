@@ -11,7 +11,7 @@ container.addEventListener('click', (e)=>{
 
         const replace_with = target.innerHTML;
         const img = document.getElementById('type-stat-dist-img')
-        img.src = `../img/${replace_with}_stat_distribution.png`
+        img.src = `img/${replace_with}_stat_distribution.png`
 
         type_to_replace.className = `type-icon type-${replace_with}`
         type_to_replace.innerHTML = replace_with
