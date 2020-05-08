@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    
+            
+</head>
+<body>
+    <div class="navbar-fixed">
+        <nav class="nav blue-grey lighten-4">
+            <div class="nav-wrapper">
+                <ul id="nav-mobile" class="left">
+                    <li><a class="black-text" href="/html/index.html">Data Set Analysis</a></li>
+                    <li><a class="black-text" href="/html/ml.html">Machine Learning</a></li>
+                    <li><a class="black-text" href="#">Choosing A Starter Pokemon</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+      <div class="container">
+          <div class="row">
+              <div class="col s12">
+                  <br> 
+                  <h5>Pokemon Classification as Legendary or Nonlegendary</h5>
+                  <hr>
+                  <p>
+                    Legendary Pokemon have higher stats than Nonlegendary Pokemon. Therefore, it should be possible for a Machine Learning algorithm to classify
+                    a Pokemon based on their stats. The biggest challenge for this classification problem should be differentiating Mega Evolutions from Legendary Pokemon, since both have higher stats than the average Pokemon.<br>
+                    Probability Density Functions were generated to get a visual of how stats and totals differed between Legendary and Nonlegendary Pokemon. </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s6">
+                    <img class="materialboxed" width="100%" src="../img/legendary_and_nonlegendary_stat_distribution.png" alt="">
+                </div>
+                <div class="col s6">
+                    <img class="materialboxed" width="100%" src="../img/legendary_and_nonlegendary_total_distribution.png" alt="">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <h5>Data Preprocessing</h5>
+                    <hr>
+                    <p>
+                        Pokedex # and Name were deemed to be useless features and were dropped. Instead of using Primary Type and Secondary Type, new boolean features 'is_TYPE' were created for all types. Furthermore, since Legendary Pokemon are stronger, it is possible that their Primary and Secondary Type are chosen in a way
+                        to minimize weaknesses. For example: Normal Type Pokemon take increased damage from Fighting Type Pokemon, deal less damage to Rock and Steel Type Pokemon,
+                        and deal no damage to Ghost Type Pokemon (and also take no damage from Ghost Type attacks) - since they do not deal increased damage to any type, 'Normal Type' is generally a disadvantage.
+                        Following this hypothesis, 'dmg_from_TYPE' features were created (default value=1) and adjusted according to a <a target="_blank" href="https://rankedboost.com/pokemon-sun-moon/type-chart/">Pokemon Weakness Chart</a>.
+                        <br>
+                        Finally, the data was split into a training and testing set based on the Generation: Generations 1-5 composed the training set, and Generation 6 composed the testing set. This resulted in a 90-10 split , which is less ideal than a 80-20 split. However, since Legendary Pokemon are much rarer than Nonlegendary Pokemon, splitting by Generation seemed like a good way to have an realistic percentage of Legendary Pokemon in the testing set.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <h5>Random Tree Forest</h5>
+                    <hr>
+                    <h6>No Specified Hyperparameters</h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s2">
+                    <table class="centered">
+                        <thead>
+                            <tr>
+                                <th colspan="2"><a class="modal-trigger" href="#modal1">Confusion Matrix</a></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>74</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>2</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col s1"></div>
+                <div class="col s9">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Precision</th>
+                                <th>Recall</th>
+                                <th>f1 Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>False</th>
+                                <td>0.93</td>
+                                <td>1.00</td>
+                                <td>0.96</td>
+                            </tr>
+                            <tr>
+                                <th>True</th>
+                                <td>1.00</td>
+                                <td>0.25</td>
+                                <td>0.40</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <br>
+                    <h6><a class="modal-trigger" href="#modal2">With Specified Hyperparameters</a></h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s2">
+                    <table class="centered">
+                        <thead>
+                            <tr>
+                                <th colspan="2"><a class="modal-trigger" href="#modal1">Confusion Matrix</a></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>74</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>3</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col s1"></div>
+                <div class="col s9">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Precision</th>
+                                <th>Recall</th>
+                                <th>f1 Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>False</th>
+                                <td>0.94</td>
+                                <td>1.00</td>
+                                <td>0.97</td>
+                            </tr>
+                            <tr>
+                                <th>True</th>
+                                <td>1.00</td>
+                                <td>0.38</td>
+                                <td>0.55</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <p>While finetuning the hyperparameters only seem to provide a marginal improvement, in reality, going from 2 True Positives to 3 True Positives is an improvement of 50%. This is especially when considering the total amount of True Positives is only 8.<br>
+                    It seems the rtf model was a little too strict when choosing Legendary Pokemon, however it is still impressive that it did not classify any Mega Evolutions as Legendary Pokemon.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <h5>Logistic Regression</h5>
+                    <hr>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s2">
+                    <table class="centered">
+                        <thead>
+                            <tr>
+                                <th colspan="2"><a class="modal-trigger" href="#modal1">Confusion Matrix</a></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>73</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>6</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col s1"></div>
+                <div class="col s9">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Precision</th>
+                                <th>Recall</th>
+                                <th>f1 Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>False</th>
+                                <td>0.97</td>
+                                <td>0.99</td>
+                                <td>0.98</td>
+                            </tr>
+                            <tr>
+                                <th>True</th>
+                                <td>0.86</td>
+                                <td>0.75</td>
+                                <td>0.80</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <p>The f1 Score indicates that this model performed better than the rtf, despite misclassifying a Nonlegendary Pokemon. It's worth noting that the default parameters for the model did not converge, and instead needed max_iter=7000 to be specified.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <h5>Support Vector Classification</h5>
+                    <hr>
+                    <h6>With Base Features</h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s2">
+                    <table class="centered">
+                        <thead>
+                            <tr>
+                                <th colspan="2"><a class="modal-trigger" href="#modal1">Confusion Matrix</a></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>73</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col s1"></div>
+                <div class="col s9">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Precision</th>
+                                <th>Recall</th>
+                                <th>f1 Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>False</th>
+                                <td>0.95</td>
+                                <td>0.99</td>
+                                <td>0.97</td>
+                            </tr>
+                            <tr>
+                                <th>True</th>
+                                <td>0.80</td>
+                                <td>0.50</td>
+                                <td>0.62</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <p>The f1 Score indicates that this model performed better than rtf, but worse than Logistic Regression. Moreover, finetuning the hyperparameters did not have an effect on performance (except for C=0.1). However, since SVM's are sensitive to scaling, the training set had to be standardized.</p>
+                    <br>
+                    <h6>With Polynomial Features (degree=3)</h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s2">
+                    <table class="centered">
+                        <thead>
+                            <tr>
+                                <th colspan="2"><a class="modal-trigger" href="#modal1">Confusion Matrix</a></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>64</td>
+                                <td>10</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>5</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col s1"></div>
+                <div class="col s9">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Precision</th>
+                                <th>Recall</th>
+                                <th>f1 Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>False</th>
+                                <td>0.96</td>
+                                <td>0.86</td>
+                                <td>0.91</td>
+                            </tr>
+                            <tr>
+                                <th>True</th>
+                                <td>0.33</td>
+                                <td>0.62</td>
+                                <td>0.43</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <p>The f1 Score indicates that this model performed worse than all the other models. Tuning the hyperparameters did not help much. This indicates that adding polynomial features is not helpful for the model. <br>
+                    Since other models cannot use the kernel trick and because the results were so underwhelming, other models will not be fitted with polynomial features.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <h5>Ensemble Learning</h5>
+                    <hr>
+                    <p>Work in progress...</p>
+                </div>
+            </div>
+
+
+            <!-- Keep modal out of row -->
+            <div class="modal" id="modal1">
+                <div class="modal-content">
+                    <table>
+                        <tr>
+                            <th colspan="2">Confusion Matrix</th>
+                        </tr>
+                        <tr>
+                            <td style="color: forestgreen">True Negatives</td>
+                            <td style="color: red">False Positives</td>
+                        </tr>
+                        <tr>
+                            <td style="color: red">False Negatives</td>
+                            <td style="color: forestgreen">True Positives</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="modal" id="modal2">
+                <div class="modal-content">
+                    <h6>Hyperparameters found with RandomizedSearchCV</h6>
+                    <ul class="collection">
+                        <li class="collection-item">n_estimators: 200</li>
+                        <li class="collection-item">min_samples_split: 10</li>
+                        <li class="collection-item">min_samples_leaf</li>
+                        <li class="collection-item">max_features: sqrt</li>
+                        <li class="collection-item">max_depth: 98</li>
+                        <li class="collection-item">bootstrap: True</li>
+
+
+                    </ul>
+                </div>
+            </div>
+                
+
+                    
+                    
+                   
+              
+          
+      </div>
+
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="../js/app.js"></script>
+</body>
+</html>

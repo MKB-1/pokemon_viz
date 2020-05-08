@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    
+            
+</head>
+<body>
+    <div class="navbar-fixed">
+        <nav class="nav blue-grey lighten-4">
+            <div class="nav-wrapper">
+                <ul id="nav-mobile" class="left">
+                    <li><a class="black-text" href="/html/index.html">Data Set Analysis</a></li>
+                    <li><a class="black-text" href="/html/ml.html">Machine Learning</a></li>
+                    <li><a class="black-text" href="#">Choosing A Starter Pokemon</a></li>
+                </ul>
+            </div>
+            
+        </nav>
+    </div>
+      <div class="container">
+          <div class="row">
+              <div class="col s12">
+                  <br> 
+                  <h5>Data Set Information</h5>
+                  <hr>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col s12">
+                  <table class="centered">
+                      <thead>
+                          <tr>
+                              <th>#</th>
+                              <th>Name</th>
+                              <th>Type 1</th>
+                              <th>Type 2</th>
+                                <th></th>
+                              <th>HP</th>
+                              <th>Atk</th>
+                              <th>Def</th>
+                              <th>Sp.Atk</th>
+                              <th>Sp.Def</th>
+                              <th>Speed</th>
+                              <th>Total</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td rowspan="3">1-721</td>
+                              <td rowspan="3">-</td>
+                              <td colspan="2" rowspan="3">Bug, Dark, Dragon, Electric, Fairy, Fire, Fighting, Flying, Grass, Ghost, Ground, Ice, Normal, Water, Poison, Psychic, Rock, Steel, <span style="color: red">None (Only avavailable for Type 2)</span></td>
+                              <td>Range</td>
+                              <td>1-255</td>
+                              <td>5-190</td>
+                              <td>5-230</td>
+                              <td>10-194</td>
+                              <td>20-230</td>
+                              <td>5-180</td>
+                              <td>180-780</td>
+                          </tr>
+                          <tr>
+                              <td>Mean</td>
+                              <td>69.26</td>
+                              <td>79.00</td>
+                              <td>73.84</td>
+                              <td>72.82</td>
+                              <td>71.90</td>
+                              <td>68.28</td>
+                              <td>435.10</td>
+                          </tr>
+                          <tr>
+                              <td>Median</td>
+                              <td>65</td>
+                              <td>75</td>
+                              <td>70</td>
+                              <td>65</td>
+                              <td>70</td>
+                              <td>65</td>
+                              <td>450</td>
+                          </tr>
+                          
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col s12">
+                <img width="100%" src="../img/Stats_Boxplot.png" alt="" class="materialboxed">
+                  <p>
+                      Preliminary analysis of the Pokemon Data Set revealed that Pokemon with only one type had Type 2 = None. To prevent errors due to null fields, they were changed to 'None'. Next, by using Pandas DataFrame methods, a rough idea of how stats were distributed was obtained. Unsurprisingly, 'Total' is several magnitudes larger than the other stats - for that reason, it will not be graphed with the other stats, in order to prevent 'squeezing'. Finally, for a more visual representation of stats, a boxplot was generated. Note that Type 1 and Type 2 are henceforth refered to as Primary Type and Secondary Type.
+                  </p>
+                  <br>
+          </div>
+          <div class="row">
+              <div class="col s12">
+                  <h5>Type Distribution</h5>
+                  <hr>
+                  <br>
+                  <h6>Primary Type Frequency</h6>
+                  <img width="100%" src="../img/PrimaryType_Countplot.png" alt="" class="materialboxed">
+                  <br>
+                  <h6>Secondary Type Frequency</h6>
+                  <img width="100%" src="../img/SecondaryType_Countplot.png" alt="" class="materialboxed">
+                  <br>
+                  <p>
+                      By using a barchart and the Pandas DataFrame.count() method, the type frequency distribution can be observed. Since types are categorical, the use of a Pareto Chart gives them a numerical value based on frequency.<br>
+                      The following trends can be observed from the charts:<br>
+                      &emsp;1. Most types with high frenquency in the Primary Type chart, have low frequency in the Secondary Type chart,<br>
+                      &emsp;2. Nearly half (48.25%) of Pokemon have a single type,<br>
+                      &emsp;3. Secondary Type distribution has much less variance than Primary Type distribution (if Secondary Type = None is disregarded).
+                  </p>
+                  <br>
+              </div>
+
+              <div class="row">
+                  <div class="col s12">
+                      <h5>Type Combinations</h5>
+                      <hr>
+                      <img width="100%" src="../img/TypeCombination_Heatmap.png" alt="" class="materialboxed">
+                      <p>A Heatmap of the Primary Type/Secondary Type combinations allows us to see which combinations are most prevalent, and which do not exist. These combinations are order specific; therefore Bug/Poison and Poison/Bug are considered different. This specificity begs the question: is there a difference between Primary Type and Secondary Type?<br>
+                    Discussions on forums revealed that most people thought that Primary Type played a larger role solely in Pokemon appearance. However, further analysis is needed.</p>
+                  </div>
+              </div>
+
+              <div class="row">
+                  <div class="col s12"> 
+                      <h5>Stat Probability Density Functions</h5>
+                      <hr>
+                      <br>
+                      <div id="stat-dist-header" class="center-align">
+                        Stat Density Functions Based on Primary Type and Secondary Type for&emsp;
+                        <p id="type-icon-selected" class="type-icon type-bug">bug</p>
+                        &emsp;Pokemon
+                    </div>
+                      <img id="type-stat-dist-img" width="100%" src="../img/bug_stat_distribution.png" alt="" class="materialboxed">
+
+                      <div id="types">
+                        <p class="type-icon type-dark">dark</p>
+                        <p class="type-icon type-dragon">dragon</p>
+                        <p class="type-icon type-electric">electric</p>
+                        <p class="type-icon type-fairy">fairy</p>
+                        <p class="type-icon type-fighting">fighting</p>
+                        <p class="type-icon type-fire">fire</p>
+                        <p class="type-icon type-flying">flying</p>
+                        <p class="type-icon type-ghost">ghost</p>
+                        <p class="type-icon type-grass">grass</p>
+                        <p class="type-icon type-ground">ground</p>
+                        <p class="type-icon type-ice">ice</p>
+                        <p class="type-icon type-normal">normal</p>
+                        <p class="type-icon type-poison">poison</p>
+                        <p class="type-icon type-psychic">psychic</p>
+                        <p class="type-icon type-rock">rock</p>
+                        <p class="type-icon type-steel">steel</p>
+                        <p class="type-icon type-water">water</p>
+                    </div>
+                    <p>By superimposing the probability density function for each stat, based on whether the selected type is a Primary Type or a Secondary Type, we can find out if Primary Type is more important than Secondary Type. For most types and most stats, both density functions have similar shapes. While there definitely are exceptions (e.g. Psychic Sp. Atk), the density functions of the same type resemble each other a lot more than density functions from different types. Therefore I hypothesize that Primary Type does not have a stronger influence on stats than Secondary Type. By referring to the barchart above, we see that there are many more Pokemon of with each type as a Primary Type. Therefore, the Primary Type density function is much less sensitive to outliers. Moreover, since the Primary Type density function takes into account Pokemon with a single type, it is more 'pure' - that is to say, it is less influenced by other types.<br>
+                    <u>Pay Attention to the graph axis scale - they change depending on the type</u></p>
+                </div>
+      
+                  </div>
+              </div>
+
+
+          </div>
+      </div>
+
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="../js/app.js"></script>
+</body>
+</html>

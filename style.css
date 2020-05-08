@@ -1,0 +1,122 @@
+
+.type-icon{
+    display: inline-block;
+    font-family: 'Fira Sans';
+    text-transform: uppercase;
+    text-shadow: 1px 1px 1px #333;
+    text-align: center;
+    width: 75px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color: white;
+    border-radius: 3px;
+    border: 1px solid black; 
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 1rem !important;
+
+    /* prevent highlight */
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+}
+
+#stat-dist-header{
+    font-size: 1.3rem;
+}
+
+
+/* Type Buttons */
+.type-grass{
+    background-color: #78C850;
+    border-color: rgb(75, 126, 50);
+}
+
+.type-normal{
+    background-color: #A6A474;
+    border-color: rgb(121, 119, 85);
+}
+
+.type-bug{
+    background-color: #A8B820;
+    border-color: rgb(138, 151, 21);
+}
+
+.type-fighting{
+    background-color: #C02F27;
+    border-color: rgb(153, 38, 32);
+}
+
+.type-ghost{
+    background-color: #715799;
+    border-color: #594477;
+}
+
+.type-electric{
+    background-color: #F9D130;
+    border-color: rgb(177, 149, 36);
+}
+
+.type-flying{
+    background-color: #A990F1;
+    border-color: rgb(140, 120, 199);
+}
+
+.type-steel{
+    background-color: #B8B8D0;
+    border-color: rgb(126, 126, 143);
+}
+
+.type-psychic{
+    background-color: #F95788;
+    border-color: rgb(160, 58, 89);
+}
+
+.type-poison{
+    background-color: #A03FA1;
+    border-color: rgb(121, 49, 122);
+}
+
+.type-fire{
+    background-color: #F17F2E;
+    border-color: rgb(168, 87, 30);
+}
+
+.type-ice{
+    background-color: #98D9D9;
+    border-color: rgb(119, 167, 167);
+}
+
+.type-ground{
+    background-color: #E2C168;
+    border-color: rgb(172, 148, 81);
+}
+
+.type-water{
+    background-color: #6890F0;
+    border-color: rgb(86, 120, 199);
+}
+
+.type-dragon{
+    background-color: #5E1DF9;
+    border-color: rgb(82, 30, 206);
+}
+
+.type-rock{
+    background-color: #B89F38;
+    border-color: rgb(145, 125, 46);
+}
+
+.type-dark{
+    background-color: #6F5747;
+    border-color: rgb(68, 55, 46);
+}
+
+.type-fairy{
+    background-color: #ECADED;
+    border-color: rgb(205, 130, 206);
+}
