@@ -2,7 +2,7 @@
 # Pokemon Stats Vizualization & Legendary Pokemon Classification
 
   <p align="center">
-    Webscrapped Pokemon stats from <a target="_blank" href="https://pokemondb.net/">Pokemon Database</a> and visualized data using Matplotlib. Used webscrapped data to train classification models from Scikit-learn. Website built using Materialize and Django.
+    Webscrapped Pokemon stats from <a target="_blank" href="https://pokemondb.net/">Pokemon Database</a> and visualized data using Matplotlib. Used webscrapped data to train classification models from Scikit-learn. Website built using Materialize.
   </p>
 </div>
 
@@ -17,7 +17,6 @@ The motivation behind this project was to try out webscrapping. I chose Pokemon 
 
 ### Built With
 
-* Django
 * Materialize
 * Matplotlib
 * Numpy
